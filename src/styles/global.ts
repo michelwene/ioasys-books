@@ -50,19 +50,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-   //colors
-    --main:#2AD2C9;
-    --secondary:#1B1D36;
-    --bg:#F6F8F9;
-    --white: #ffffff;
+    --white: #FFFFFF;
+    
+    --purple-700:#B22E6F;
+    --purple-800:#AB2680;
 
-    --pink:#ED2E7E;
-    --rose:#F59090;
-    --violet:#9290F5;
-    --green:#00BA88;
-
-    --yellow:#F4B740;
-    --purple:#4164E3;
+    --gray-600: #999999;
+    --gray-800: #333333;
 
   }
   input[type='date']::-webkit-inner-spin-button,
