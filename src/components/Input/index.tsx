@@ -2,16 +2,27 @@ import { Container } from "./styles";
 
 interface InputProps {
   name: string;
-  label?: string;
   type: string;
+  label?: string;
+  placeholder?: string;
+  isButton?: React.ReactNode;
 }
 
-export function Input({ name, label, type }: InputProps) {
+export function Input({
+  name,
+  label,
+  type,
+  placeholder,
+  isButton,
+}: InputProps) {
   return (
     <>
       <Container>
-        {!!label && <label htmlFor={name}>{label}</label>}
-        <input name={name} id={name} type={type} />
+        <div>
+          {!!label && <label htmlFor={name}>{label}</label>}
+          <input name={name} id={name} type={type} placeholder={placeholder} />
+        </div>
+        {isButton}
       </Container>
     </>
   );

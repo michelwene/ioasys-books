@@ -16,9 +16,19 @@ export default function Login() {
             <p>Books</p>
           </div>
           <form>
-            <Input name="email" label="E-mail" type="email" />
-            <Input name="password" label="Senha" type="password" />
-            <button type="submit">Entrar</button>
+            <Input
+              name="email"
+              type="email"
+              label="Email"
+              placeholder="Digite seu email"
+            />
+            <Input
+              name="password"
+              type="password"
+              label="Senha"
+              placeholder="Digite sua senha"
+              isButton={<button type="submit">Entrar</button>}
+            />
           </form>
         </Section>
       </Main>
