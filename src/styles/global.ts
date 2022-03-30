@@ -55,9 +55,9 @@ export const GlobalStyle = createGlobalStyle`
     --purple-700:#B22E6F;
     --purple-800:#AB2680;
 
-    --gray-900: rgba(0, 0, 0, 0.32);
     --gray-600: #999999;
     --gray-800: #333333;
+    --gray-900: rgba(0, 0, 0, 0.32);
 
   }
   input[type='date']::-webkit-inner-spin-button,

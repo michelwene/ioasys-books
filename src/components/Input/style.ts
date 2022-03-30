@@ -25,6 +25,7 @@ export const Container = styled.div`
     flex: 1;
     flex-direction: column;
 
+
     label {
       color: var(--white);
       font-size: 0.75rem;
@@ -40,6 +41,7 @@ export const Container = styled.div`
       font-size: 1rem;
       outline: none;
 
+      padding-right: 0.5rem;
       height: 100%;
       flex: 1;
 

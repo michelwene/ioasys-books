@@ -1,9 +1,16 @@
 import Head from "next/head";
 import { Main, Section } from "./style";
-import bgImg from "../../public/background-image.png";
 import { Input } from "components/Input";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   return (
     <>
       <Head>
