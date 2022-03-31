@@ -1,38 +1,66 @@
 import Head from "next/head";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import { Container, Header, Section } from "styles/livros";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Container,
+  Header,
+  ItemsGrid,
+  Pagination,
+  Section,
+} from "styles/livros";
 import { useEffect, useState } from "react";
 import { Modal } from "components/Modal";
 import Link from "next/link";
 import { handleRecoverUserDataFromCookies } from "utils/recoverUserDataFromCookie";
 
-import { api } from "services/client/api";
+import { api, setupAPI } from "services/client/api";
 import { Ibook, IBooksData } from "types/livros";
+import { CardBook } from "components/CardBook";
+import { CardBookSkeleton } from "components/CardBook/skeleton";
+import { GetServerSideProps } from "next";
+import { useIsFirstRender } from "hooks/useFirstRender";
 
+interface IProps {
+  books: Ibook[];
+  totalPages: number;
+}
 
-export default function Login() {
-  const [showModal, setShowModal] = useState(false);
-  const [books, setBooks] = useState<Ibook[]>([]);
-  const [pages, setPages] = useState(1);
+export default function BooksPage({
+  books: initialData,
+  totalPages: initialTotalPages,
+}: IProps) {
+  const [books, setBooks] = useState<Ibook[]>(initialData);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(initialTotalPages);
   const [selectedBook, setSelectedBook] = useState<Ibook>();
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const userData = handleRecoverUserDataFromCookies();
+  const isFirst = useIsFirstRender();
+
+  async function loadBooks() {
+    try {
+      setLoading(true);
+      const { data } = await api.get<IBooksData>("/books", {
+        params: { page: page, amount: 12 },
+      });
+
+      setBooks(data.data);
+      setTotalPages(Math.ceil(data.totalPages));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
-    async function loadBooks() {
-      try {
-        const { data } = await api.get<IBooksData>("/books", {
-          params: { page: 1, amount: 12 },
-        });
-        console.log(data);
-
-        setBooks(data.data);
-      } catch (err) {
-        console.log(err);
-      }
+    if (!isFirst) {
+      loadBooks();
     }
-
-    loadBooks();
-  }, []);
+  }, [page]);
 
   const handleOpenModal = (book: Ibook) => {
     if (!showModal) {
@@ -50,54 +78,92 @@ export default function Login() {
     setSelectedBook(undefined);
   };
 
+  const handleNextPage = () => {
+    if (page < totalPages) {
+      setPage(page + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
   return (
     <>
       <Head>
         <title>Livros | Oasys Books</title>
       </Head>
-      <Header>
-        <div>
-          <img src="/logo_black.svg" alt="Oasys" />
-          <p>Books</p>
-        </div>
-        <div>
-          <p>
-            Bem vindo, <strong>{userData?.name}</strong>!
-          </p>
-          <Link href="/">
-            <button aria-label="Exit Books" />
-          </Link>
-        </div>
-      </Header>
       <Container>
+        <Header>
+          <div>
+            <img src="/logo_black.svg" alt="Oasys" />
+            <p>Books</p>
+          </div>
+          <div>
+            <p>
+              Bem vindo, <strong>{userData?.name}</strong>!
+            </p>
+            <Link href="/">
+              <button aria-label="Exit Books" />
+            </Link>
+          </div>
+        </Header>
         <AnimateSharedLayout>
           <Section>
-            {books?.map((item) => (
-              <motion.div
-                key={item.id}
-                onClick={() => handleOpenModal(item)}
-                layoutId={item.id}
-              >
-                <img src={item.imageUrl} alt={item.title} />
-                <div>
-                  <h2>{item.title}</h2>
-                  <h3>{item.authors}</h3>
-                  <p>
-                    {item.pageCount} páginas <br /> {item.publisher} <br />
-                    Publicado em {item.published}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </Section>
-          <Modal showModal={showModal} toggleModal={onRequestClose} selectedItem={selectedBook}/>
-        </AnimateSharedLayout>
+            <ItemsGrid>
+              {loading
+                ? Array(12)
+                    .fill(0)
+                    .map((_, index) => <CardBookSkeleton key={index} />)
+                : books?.map((item) => (
+                    <CardBook
+                      onClick={() => handleOpenModal(item)}
+                      item={item}
+                      key={item.id}
+                    />
+                  ))}
+            </ItemsGrid>
 
-        {/* <button type="button" onClick={() => handleTest()}>
-          {" "}
-          asdfadsfas
-        </button> */}
+            <Pagination>
+              <p>
+                Página <strong>{page}</strong> de <strong>{totalPages}</strong>
+              </p>
+              <button onClick={handlePreviousPage} disabled={page === 1}>
+                <ArrowLeft />
+              </button>
+              <button
+                className="next"
+                disabled={page === totalPages}
+                onClick={handleNextPage}
+              >
+                <ArrowRight />
+              </button>
+            </Pagination>
+          </Section>
+
+          <Modal
+            showModal={showModal}
+            toggleModal={onRequestClose}
+            selectedItem={selectedBook}
+          />
+        </AnimateSharedLayout>
       </Container>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const apiServer = setupAPI(context);
+  const { data } = await apiServer.get<IBooksData>("/books", {
+    params: { page: 1, amount: 12 },
+  });
+
+  return {
+    props: {
+      books: data.data,
+      totalPages: Math.ceil(data.totalPages),
+    },
+  };
+};

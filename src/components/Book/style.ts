@@ -112,7 +112,6 @@ export const ImgBook = styled.div`
 
   @media screen and (min-width: 1020px) {
     width: 100%;
-
   }
 
   img {
@@ -121,7 +120,7 @@ export const ImgBook = styled.div`
 
     @media screen and (min-width: 0px) {
       margin: 1rem 0 0 0;
-      width: 90vw;
+      width: 80vw;
       height: auto;
     }
 
