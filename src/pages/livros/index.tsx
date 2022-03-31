@@ -1,8 +1,9 @@
 import Head from "next/head";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import { Container, Header, Section } from "./style";
+import { Container, Header, Section } from "styles/livros";
 import { useState } from "react";
 import { Modal } from "components/Modal";
+import Link from "next/link";
 
 export default function Login() {
   const [showModal, setShowModal] = useState(false);
@@ -65,7 +66,9 @@ export default function Login() {
           <p>
             Bem vindo, <strong>Michel Wene</strong>!
           </p>
-          <button aria-label="Exit Books" />
+          <Link href="/">
+            <button aria-label="Exit Books" />
+          </Link>
         </div>
       </Header>
       <Container>
@@ -89,10 +92,7 @@ export default function Login() {
               </motion.div>
             ))}
           </Section>
-          <Modal
-            showModal={showModal}
-            toggleModal={toggleModal}
-          />
+          <Modal showModal={showModal} toggleModal={toggleModal} />
         </AnimateSharedLayout>
       </Container>
     </>

@@ -5,10 +5,14 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
 
+  @media screen and (max-width: 375px) {
+    flex-direction: column;
+  }
+  
   > div {
     & + div {
       margin-right: 3rem;
-      
+
       h1 {
         color: var(--gray-800);
         font-size: 1.75rem;
@@ -85,6 +89,11 @@ export const ImgBook = styled.div`
   img {
     margin: 3rem;
     filter: drop-shadow(0px 12px 18px rgba(0, 0, 0, 0.3));
+  }
+
+  @media screen and (max-width: 375px) {
+    width: 100%;
+    height: 350px;
   }
 `;
 

@@ -3,10 +3,25 @@ import styled from "styled-components";
 export const Header = styled.header`
   align-items: center;
   display: flex;
-  justify-content: space-between;
 
   max-width: 1130px;
-  margin: 0 auto;
+
+  @media screen and (max-width: 375px) {
+  }
+
+  @media screen and (max-width: 768px) {
+  }
+
+  @media screen and (max-width: 1024px) {
+    justify-content: space-around;
+    margin-top: 2.5rem;
+  }
+
+  @media screen and (min-width: 1025px) {
+    justify-content: space-between;
+    margin: 2.5rem auto 0;
+    padding: 0 1.5rem;
+  }
 
   div {
     display: flex;
@@ -25,6 +40,10 @@ export const Header = styled.header`
         font-size: 0.75rem;
         color: var(--gray-800);
         padding-right: 1rem;
+
+        @media (max-width: 375px) {
+          display: none;
+        }
       }
 
       button {
@@ -45,24 +64,49 @@ export const Header = styled.header`
 
 export const Container = styled.main`
   background: url("/bg.png") top / cover no-repeat;
-
   width: 100vw;
   height: 100vh;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+
+  @media screen and (max-width: 375px) {
+  }
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+  }
+
+  @media screen and (max-width: 1024px) {
+    align-items: center;
+    margin-top: 0;
+  }
 `;
 
 export const Section = styled.section`
   width: 100%;
-  max-width: 1140px;
-  height: 100%;
-  max-height: 530px;
+  max-width: 1200px;
 
   display: flex;
   flex-wrap: wrap;
   column-gap: 1rem;
+
+  @media screen and (max-width: 375px) {
+  }
+
+  @media screen and (max-width: 768px) {
+  }
+
+  @media screen and (max-width: 1024px) {
+    justify-content: center;
+    row-gap: 1rem;
+    max-height: 100vh;
+  }
+
+  @media screen and (min-width: 1025px) {
+    margin: 2.5rem auto 0 auto;
+    padding: 0 1.5rem;
+    max-height: 530px;
+  }
 
   > div {
     background-color: var(--white);

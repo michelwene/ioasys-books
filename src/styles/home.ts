@@ -8,11 +8,20 @@ export const Main = styled.main`
 
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 375px) {
+    justify-content: center;
+  }
 `;
 
 export const Section = styled.section`
   max-width: 1200px;
   padding-left: 7.25rem;
+
+  @media screen and (max-width: 375px) {
+    padding-left: 0;
+    width: 90vw;
+  }
 
   > div {
     display: flex;
@@ -37,11 +46,36 @@ export const Section = styled.section`
 
       letter-spacing: 0.95px;
       padding: 0.01rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      transition: filter 0.2s;
+      transition: all 0.2s ease-in;
 
-      &:hover{
+      &:hover {
         filter: brightness(0.9);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+
+      svg {
+        animation: loading 1.5s linear infinite;
+      }
+
+      @keyframes loading {
+        0% {
+          transform: rotateZ(0deg);
+        }
+        100% {
+          transform: rotateZ(-360deg);
+        }
       }
     }
   }

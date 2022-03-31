@@ -30,6 +30,11 @@ export const ModalWrapper = styled(motion.div)`
 
   display: flex;
   overflow: scroll;
+
+  @media screen and (max-width: 375px) {
+    width: 90vw;
+    height: 85vh;
+  }
 `;
 
 export const CloseModalButton = styled(RiCloseCircleFill)`
