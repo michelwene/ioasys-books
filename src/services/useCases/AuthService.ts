@@ -2,28 +2,17 @@ import { AxiosError } from 'axios'
 import { api, setAuthentication } from 'services/client/api'
 import { handleSaveDataInCookie } from 'utils/saveDataInCookie'
 
-interface IPayloadSignIn {
-  email: string;
-  password: string;
-}
-
-interface IResponseSignIn {
-  id: string;
-  name: string;
-  email: string;
-  birthdate: string;
-  gender: string;
-}
-
+import { IPayloadSignIn, IUserData } from 'types/auth'
 class AuthService {
   async signIn(payload: IPayloadSignIn): Promise<void> {
     try {
-      const { data, headers } =  await api.post<IResponseSignIn>('/auth/sign-in', payload);
+      const { data, headers } =  await api.post<IUserData>('/auth/sign-in', payload);
 
       setAuthentication(headers.authorization!);
 
       handleSaveDataInCookie({ keyCookie: 'userData', data: JSON.stringify(data) })
       handleSaveDataInCookie({ keyCookie: 'accessToken', data: headers.authorization! })
+      handleSaveDataInCookie({ keyCookie: 'refreshToken', data: headers.authorization! })
     } catch (err) {
       const error = err as AxiosError;
       
@@ -43,7 +32,7 @@ class AuthService {
     }
 
     async refeshToken() {
-      alert('sdfgfds')
+      alert('')
     }
   }
 

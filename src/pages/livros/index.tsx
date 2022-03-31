@@ -1,48 +1,40 @@
 import Head from "next/head";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { Container, Header, Section } from "styles/livros";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "components/Modal";
 import Link from "next/link";
+import { handleRecoverUserDataFromCookies } from "utils/recoverUserDataFromCookie";
+
+import { api } from "services/client/api";
+import { Ibook, IBooksData } from "types/livros";
+
 
 export default function Login() {
   const [showModal, setShowModal] = useState(false);
-  const livros = [
-    {
-      id: 1,
-      titulo: "Livro 1",
-      autor: "Autor 1",
-      editora: "Editora 1",
-      númeroPaginas: 100,
-      ano: 2002,
-    },
-    {
-      id: 2,
-      titulo: "Livro 2",
-      autor: "Autor 2",
-      editora: "Editora 2",
-      númeroPaginas: 100,
-      ano: 2016,
-    },
-    {
-      id: 3,
-      titulo: "Livro 3",
-      autor: "Autor 3",
-      editora: "Editora 3",
-      númeroPaginas: 100,
-      ano: 2015,
-    },
-    {
-      id: 4,
-      titulo: "Livro 4",
-      autor: "Autor 4",
-      editora: "Editora 4",
-      númeroPaginas: 100,
-      ano: 2022,
-    },
-  ];
+  const [books, setBooks] = useState<Ibook[]>([]);
+  const [pages, setPages] = useState(1);
+  const [selectedBook, setSelectedBook] = useState<Ibook>();
+  const userData = handleRecoverUserDataFromCookies();
 
-  const toggleModal = (id) => {
+  useEffect(() => {
+    async function loadBooks() {
+      try {
+        const { data } = await api.get<IBooksData>("/books", {
+          params: { page: 1, amount: 12 },
+        });
+        console.log(data);
+
+        setBooks(data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    loadBooks();
+  }, []);
+
+  const handleOpenModal = (book: Ibook) => {
     if (!showModal) {
       document.body.style.overflow = "hidden";
     } else {
@@ -50,6 +42,12 @@ export default function Login() {
     }
 
     setShowModal(!showModal);
+    setSelectedBook(book);
+  };
+
+  const onRequestClose = () => {
+    setShowModal(false);
+    setSelectedBook(undefined);
   };
 
   return (
@@ -64,7 +62,7 @@ export default function Login() {
         </div>
         <div>
           <p>
-            Bem vindo, <strong>Michel Wene</strong>!
+            Bem vindo, <strong>{userData?.name}</strong>!
           </p>
           <Link href="/">
             <button aria-label="Exit Books" />
@@ -74,26 +72,31 @@ export default function Login() {
       <Container>
         <AnimateSharedLayout>
           <Section>
-            {livros.map((item) => (
+            {books?.map((item) => (
               <motion.div
                 key={item.id}
-                onClick={() => toggleModal(item.id)}
-                layoutId={String(item.id)}
+                onClick={() => handleOpenModal(item)}
+                layoutId={item.id}
               >
-                <img src="/Book1.svg" alt="Crossing the Chasm" />
+                <img src={item.imageUrl} alt={item.title} />
                 <div>
-                  <h2>{item.titulo}</h2>
-                  <h3>{item.autor}</h3>
+                  <h2>{item.title}</h2>
+                  <h3>{item.authors}</h3>
                   <p>
-                    {item.númeroPaginas} páginas <br /> {item.editora} <br />
-                    Publicado em {item.ano}
+                    {item.pageCount} páginas <br /> {item.publisher} <br />
+                    Publicado em {item.published}
                   </p>
                 </div>
               </motion.div>
             ))}
           </Section>
-          <Modal showModal={showModal} toggleModal={toggleModal} />
+          <Modal showModal={showModal} toggleModal={onRequestClose} selectedItem={selectedBook}/>
         </AnimateSharedLayout>
+
+        {/* <button type="button" onClick={() => handleTest()}>
+          {" "}
+          asdfadsfas
+        </button> */}
       </Container>
     </>
   );

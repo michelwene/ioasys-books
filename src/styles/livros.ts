@@ -63,27 +63,28 @@ export const Header = styled.header`
 `;
 
 export const Container = styled.main`
+  align-items: center;
   background: url("/bg.png") top / cover no-repeat;
   width: 100vw;
   height: 100vh;
 
   display: flex;
 
-  @media screen and (max-width: 375px) {
-  }
-
-  @media screen and (max-width: 768px) {
+  @media (max-width: 375px) {
     align-items: flex-start;
   }
 
-  @media screen and (max-width: 1024px) {
-    align-items: center;
-    margin-top: 0;
+  @media (max-width: 768px) {
+    align-items: flex-start;
+  }
+
+  @media (max-width: 1024px) {
   }
 `;
 
 export const Section = styled.section`
   width: 100%;
+  height: auto;
   max-width: 1200px;
 
   display: flex;
@@ -94,18 +95,19 @@ export const Section = styled.section`
   }
 
   @media screen and (max-width: 768px) {
+    margin-top: 2.5rem;
   }
 
   @media screen and (max-width: 1024px) {
     justify-content: center;
     row-gap: 1rem;
-    max-height: 100vh;
   }
 
   @media screen and (min-width: 1025px) {
     margin: 2.5rem auto 0 auto;
     padding: 0 1.5rem;
     max-height: 530px;
+    row-gap: 1rem;
   }
 
   > div {

@@ -2,8 +2,15 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Background, CloseModalButton, ModalWrapper } from "./style";
 import { Book } from "components/Book";
+import { Ibook } from "types/livros";
 
-export function Modal({ showModal, toggleModal}) {
+interface ModalProps {
+  showModal: boolean;
+  selectedItem: Ibook;
+  toggleModal: () => void;
+}
+
+export function Modal({ showModal, toggleModal, selectedItem }: ModalProps) {
   const modalRef = useRef();
 
   const closeModal = (e) => {
@@ -29,61 +36,12 @@ export function Modal({ showModal, toggleModal}) {
     };
   }, [keyPress]);
 
-  const backgroundVariants = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  const modalVariants = {
-    initial: {
-      opacity: 0,
-      y: 100,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.1,
-        type: "spring",
-        stiffness: 1000,
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -200,
-    },
-  };
-
   return (
     <AnimatePresence>
       {showModal && (
-        <Background
-          variants={backgroundVariants}
-          animate="animate"
-          initial="initial"
-          onClick={closeModal}
-          ref={modalRef}
-          exit={{
-            opacity: 0,
-          }}
-        >
-          <ModalWrapper
-            variants={modalVariants}
-            animate="animate"
-            initial="initial"
-            exit={{
-              opacity: 0,
-              y: "-100vh",
-            }}
-          >
-            <Book />
+        <Background onClick={closeModal} ref={modalRef}>
+          <ModalWrapper>
+            <Book item={selectedItem} />
             <CloseModalButton aria-label="Close modal" onClick={toggleModal} />
           </ModalWrapper>
         </Background>

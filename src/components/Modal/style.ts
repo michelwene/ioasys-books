@@ -2,7 +2,46 @@ import styled from "styled-components";
 import { RiCloseCircleFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 
-export const Background = styled(motion.div)`
+const backgroundVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+const modalVariants = {
+  initial: {
+    opacity: 0,
+    y: 100,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      stiffness: 1000,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -200,
+  },
+};
+
+export const Background = styled(motion.div).attrs({
+  variants: backgroundVariants,
+  animate: "animate",
+  initial: "initial",
+  exit: {
+    opacity: 0,
+  },
+})`
   backdrop-filter: blur(2px);
   background: rgba(0, 0, 0, 0.4);
 
@@ -18,7 +57,15 @@ export const Background = styled(motion.div)`
   justify-content: center;
 `;
 
-export const ModalWrapper = styled(motion.div)`
+export const ModalWrapper = styled(motion.div).attrs({
+  variants: modalVariants,
+  animate: "animate",
+  initial: "initial",
+  exit: {
+    opacity: 0,
+    y: "-100vh",
+  },
+})`
   background: var(--white);
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   color: var(--gray-900);
