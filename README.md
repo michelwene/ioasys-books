@@ -1,34 +1,132 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ioasys Books.
 
-## Getting Started
+Esta é uma solução para o desafio Ioasys Books, proprosto pela empresa Ioasys.
 
-First, run the development server:
+## :dart: Resumo de conteúdos
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [Visão Geral](#Visão-Geral)
+  - [O desafio](#O-desafio)
+  - [Captura de tela](#Captura-de-tela)
+  - [Links](#Links)
+- [Meu processo](#Meu-processo)
+  - [Construído com](#Constrído-com)
+  - [O que eu aprendi](#O-que-eu-aprendi)
+  - [Continuação dos desenvolvimentos](#Continuação-dos-desenvolvimentos)
+  - [Recursos utilizados](#Recursos-utilizados)
+- [Autor](#Autor)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Visão Geral.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### :globe_with_meridians: O desafio
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Os usuários devem ser capazes de:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Visualizar o layout ideal para o aplicativo, dependendo do tamanho da tela do dispositivo.
+- Visualizar os estados de foco para todos os elementos interativos na página.
+- O usuário não poderá entrar na página de livros sem estar logado.
+- O usuário é automaticamente redirecionado para a página de livros se anteriormente ele já tiver feito login.
+- Identificar campos de Input em relação à e-mail e/ou senha obrigatório.
+- Identificar campos de Input em relação à senha e/ou email incorretos.
+- Botão de loading ao clicar no botão de Entrar.
+- Visualizar Esqueleto da página enquanto a requisição é feita na API.
+- Visualizar os livros de forma dinâmica ao trocar as página.
+- Limite de 12 livros por página.
+- Visualizar o botão de troca de página ná primeira e última página, os botões deveram estar desabilitados em ambos os casos.
+- Visualizar o Modal e que o mesmo abre no livro em que ele foi clicado.
+- Visualizar a intereção no botão EXIT do header, ao ser clicado o mesmo é redirecionado para página de login e não pode voltar para a página de livros sem realizar novamente um login.
 
-## Learn More
+### Captura de tela
 
-To learn more about Next.js, take a look at the following resources:
+- Login Desktop
+<p  align="center" >
+  <img src="/login_desktop.png"alt="Desktop"/>
+</p>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Login Tablet
+<p  align="center" >
+<img src="/login_tablet.png"alt="Tablet"/>
+</p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Login Mobile
+<p  align="center" >
+<img src="/login_mobile.png"alt="mobile"/>
+</p>
 
-## Deploy on Vercel
+- Login Mobile Incorreto
+<p  align="center" >
+<img src="/login_mobile_incorrect.png"alt="mobile"/>
+</p>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Login Mobile Loading
+<p  align="center" >
+<img src="/login_mobile_loading.png"alt="mobile"/>
+</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Login Mobile Validação
+<p  align="center" >
+<img src="/login_mobile_validation.png"alt="mobile"/>
+</p>
+
+- Books Desktop
+<p  align="center" >
+<img src="/books_desktop.png"alt="mobile"/>
+</p>
+
+- Books Tablet
+<p  align="center" >
+<img src="/books_tablet.png"alt="mobile"/>
+</p>
+
+- Books Mobile
+<p  align="center" >
+<img src="/books_mobile.png"alt="mobile"/>
+</p>
+
+### Links
+
+- Solução URL: [https://github.com/michelwene/ioasys-books](https://github.com/michelwene/ioasys-books)
+- Site URL: []()
+
+## :page_with_curl: Meu processo
+
+### Construído com
+
+- NextJS
+- Typescript
+- Axios
+- React-hook-form
+- Yup
+- Middleware
+- Nookies
+- OAuth
+- UseFirstRender
+- Framer-motion
+- Styled-Components
+- Design responsivo
+
+### Continuação dos desenvolvimentos
+
+Pretendo continuar fazendo projetos de desafios entre outros para melhorar meus conhecimentos em NextJS e TypeScript e outras tecnologias.
+
+### Recursos utilizados
+
+- [Developer Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - A documentação do Developer Mozilla é essencial para compreender as funções e conseguir aplicar as mesmas no projeto.
+
+- [Typescript](https://www.typescriptlang.org/docs/handbook/2/keyof-types.html)
+- Documentação do Typescript utilizada para realizar a tipagem da propriedades.
+
+- [React-hook-form](https://react-hook-form.com/)
+- Utilizado para fazer o formulário de inserção dos inputs.
+
+- [Yup](https://github.com/jquense/yup)
+- Utilização do yup para formatação do formulário.
+
+- [NextJS Middleware](https://nextjs.org/docs/middleware) - Documentação utilizada para utilização do Middleware
+
+- [Hook-First-Render](https://usehooks-ts.com/react-hook/use-is-first-render) - Documentação utilizada para aplicação do hook first Render.
+
+- [NextAuth](https://next-auth.js.org/) - Documentação utilizada para aplicação da Autenticação.
+
+## :medal_military: Autor
+
+- Linkedin - [@michelwene](https://www.linkedin.com/in/michelwene/)

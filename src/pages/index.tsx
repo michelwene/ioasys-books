@@ -7,11 +7,11 @@ import router from 'next/router';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from 'components/Input';
+import { InputError } from 'components/InputError';
 import { Tooltip } from 'components/Tooltip';
 import { authService } from 'services/useCases/AuthService';
 import { Main, Section } from 'styles/home';
 import * as yup from 'yup';
-import { InputError } from 'components/InputError';
 
 interface IValuesFormSignIn {
   email: string;
