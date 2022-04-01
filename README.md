@@ -54,32 +54,32 @@ Os usuários devem ser capazes de:
 
 - Login Mobile Incorreto
 <p  align="center" >
-<img src="/public/login_mobile_incorrect.png"alt="mobile"/>
+<img src="/public/login_mobile_incorrect.png"alt="mobile incorreto"/>
 </p>
 
 - Login Mobile Loading
 <p  align="center" >
-<img src="/public/login_mobile_loading.png"alt="mobile"/>
+<img src="/public/login_mobile_loading.png"alt="mobile loading"/>
 </p>
 
 - Login Mobile Validação
 <p  align="center" >
-<img src="/public/login_mobile_validation.png"alt="mobile"/>
+<img src="/public/login_mobile_validation.png"alt="mobile validation"/>
 </p>
 
 - Books Desktop
 <p  align="center" >
-<img src="/public/books_desktop.png"alt="mobile"/>
+<img src="/public/books_desktop.png"alt="desktop books"/>
 </p>
 
 - Books Tablet
 <p  align="center" >
-<img src="/public/books_tablet.png"alt="mobile"/>
+<img src="/public/books_tablet.png"alt="tablet books"/>
 </p>
 
 - Books Mobile
 <p  align="center" >
-<img src="/public/books_mobile.png"alt="mobile"/>
+<img src="/public/books_mobile.png"alt="mobile books"/>
 </p>
 
 ### Links
