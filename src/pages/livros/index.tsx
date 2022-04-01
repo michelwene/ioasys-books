@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import router from 'next/router';
 
 import { CardBook } from 'components/CardBook';
@@ -114,7 +115,7 @@ export default function BooksPage({
       <Container>
         <Header>
           <div>
-            <img src="/logo_black.svg" alt="Oasys" />
+            <Image width={105} height={36} src="/Logo_black.svg" alt="Oasys" />
             <p>Books</p>
           </div>
           <div>
