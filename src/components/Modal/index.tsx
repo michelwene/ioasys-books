@@ -1,8 +1,11 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Background, CloseModalButton, ModalWrapper } from "./style";
-import { Book } from "components/Book";
-import { Ibook } from "types/livros";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useCallback, useRef } from 'react';
+
+import { Book } from 'components/Book';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Ibook } from 'types/livros';
+
+import { Background, CloseModalButton, ModalWrapper } from './style';
 
 interface ModalProps {
   showModal: boolean;
@@ -29,10 +32,10 @@ export function Modal({ showModal, toggleModal, selectedItem }: ModalProps) {
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", keyPress);
+    document.addEventListener('keydown', keyPress);
 
     return () => {
-      document.removeEventListener("keydown", keyPress);
+      document.removeEventListener('keydown', keyPress);
     };
   }, [keyPress]);
 

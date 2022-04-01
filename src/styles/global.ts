@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -58,6 +58,8 @@ export const GlobalStyle = createGlobalStyle`
     --gray-600: #999999;
     --gray-800: #333333;
     --gray-900: rgba(0, 0, 0, 0.32);
+    
+    --red-500: rgb(252, 3, 44);
 
   }
   input[type='date']::-webkit-inner-spin-button,

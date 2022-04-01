@@ -1,14 +1,17 @@
-import { useState } from "react";
-import Head from "next/head";
-import router from "next/router";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { Main, Section } from "styles/home";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Input } from "components/Input";
-import { useForm } from "react-hook-form";
-import { authService } from "services/useCases/AuthService";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
-import * as yup from "yup";
+import Head from 'next/head';
+import router from 'next/router';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Input } from 'components/Input';
+import { Tooltip } from 'components/Tooltip';
+import { authService } from 'services/useCases/AuthService';
+import { Main, Section } from 'styles/home';
+import * as yup from 'yup';
+import { InputError } from 'components/InputError';
 
 interface IValuesFormSignIn {
   email: string;
@@ -16,19 +19,20 @@ interface IValuesFormSignIn {
 }
 
 const signInSchema = yup.object({
-  email: yup.string().email(),
-  password: yup.string().min(6),
+  email: yup.string().email('Email inválido').required('Email obrigatório*'),
+  password: yup.string().required('Senha obrigatória*')
 });
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
+  const [errorRequest, setErrorRequest] = useState<null | string>(null);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm({
-    resolver: yupResolver(signInSchema),
+    resolver: yupResolver(signInSchema)
   });
 
   async function handleSignIn(values: IValuesFormSignIn) {
@@ -37,9 +41,12 @@ export default function Login() {
 
       await authService.signIn(values);
 
-      router.push("/livros");
+      router.push('/livros');
     } catch (err) {
-      alert(err);
+      setErrorRequest(err.message);
+      setTimeout(() => {
+        setErrorRequest(null);
+      }, 3000);
     } finally {
       setIsLoading(false);
     }
@@ -62,29 +69,36 @@ export default function Login() {
               type="email"
               label="Email"
               placeholder="Digite seu email"
-              {...register("email")}
+              {...register('email')}
             />
+            {errors.email ? (
+              <InputError type={errors.email.type} field="email" />
+            ) : null}
+
             <Input
               name="password"
               type="password"
               label="Senha"
               placeholder="Digite sua senha"
-              {...register("password")}
+              {...register('password')}
               isButton={
                 <button type="submit" disabled={isLoading}>
                   {isLoading ? (
                     <AiOutlineLoading3Quarters size={20} />
                   ) : (
-                    "Entrar"
+                    'Entrar'
                   )}
                 </button>
               }
             />
+            {errors.password ? (
+              <InputError type={errors.password.type} field="password" />
+            ) : null}
+
+            {!!errorRequest && <Tooltip text={errorRequest} />}
           </form>
         </Section>
       </Main>
     </>
   );
 }
-
-

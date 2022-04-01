@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   align-items: center;
@@ -24,7 +24,6 @@ export const Container = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
-
 
     label {
       color: var(--white);

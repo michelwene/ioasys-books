@@ -1,17 +1,12 @@
-import styled from "styled-components";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
+
+import styled from 'styled-components';
 
 export const Header = styled.header`
   width: 100%;
   align-items: center;
   display: flex;
   max-width: 1130px;
-
-  @media screen and (max-width: 375px) {
-  }
-
-  @media screen and (max-width: 768px) {
-  }
 
   @media screen and (max-width: 1024px) {
     justify-content: space-around;
@@ -48,7 +43,7 @@ export const Header = styled.header`
       }
 
       button {
-        background: url("/LogOut.svg") center / cover no-repeat;
+        background: url('/LogOut.svg') center / cover no-repeat;
         height: 32px;
         width: 32px;
         border: 0 none;
@@ -68,7 +63,7 @@ export const Container = styled.main`
   display: flex;
   flex-direction: column;
 
-  background: url("/bg.png") top / cover no-repeat;
+  background: url('/bg.png') top / cover no-repeat;
   width: 100vw;
   min-height: 100vh;
 
@@ -143,12 +138,9 @@ export const Pagination = styled.div`
     font-weight: 500;
     margin-right: 1rem;
 
-
     @media screen and (max-width: 768px) {
       order: 2;
     }
-
-    
   }
 
   button {

@@ -1,5 +1,7 @@
-import { Ibook } from "types/livros";
-import { Container } from "./style";
+/* eslint-disable @next/next/no-img-element */
+import { Ibook } from 'types/livros';
+
+import { Container } from './style';
 
 interface ICardBookProps {
   item: Ibook;

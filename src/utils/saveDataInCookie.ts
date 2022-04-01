@@ -6,7 +6,11 @@ interface ISaveDataInCookieProps {
   time?: number;
 }
 
-export function handleSaveDataInCookie({ keyCookie, data, time }: ISaveDataInCookieProps) {
+export function handleSaveDataInCookie({
+  keyCookie,
+  data,
+  time
+}: ISaveDataInCookieProps) {
   setCookie(undefined, `@Ioasy:${keyCookie}`, data, {
     maxAge: time ?? 60 * 60 * 24 * 30, // 30 days
     path: '/'

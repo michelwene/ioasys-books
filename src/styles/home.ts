@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.main`
   width: 100vw;
   height: 100vh;
 
-  background: url("/background-image.png") center / cover no-repeat;
+  background: url('/background-image.png') center / cover no-repeat;
 
   display: flex;
   align-items: center;
@@ -19,8 +19,12 @@ export const Section = styled.section`
   padding-left: 7.25rem;
 
   @media screen and (max-width: 375px) {
+  }
+
+  @media screen and (max-width: 768px) {
     padding-left: 0;
     width: 90vw;
+    margin: 0 auto;
   }
 
   > div {
@@ -35,6 +39,7 @@ export const Section = styled.section`
     }
   }
   form {
+    width: 295px;
     button {
       background-color: var(--white);
       border: 0 none;

@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { ImQuotesLeft } from "react-icons/im";
+import { ImQuotesLeft } from 'react-icons/im';
+
+import styled from 'styled-components';
 
 export const Container = styled.div`
   align-items: center;
@@ -67,7 +68,7 @@ export const Container = styled.div`
           span {
             height: 14px;
             width: 14px;
-            content: "\f10d";
+            content: '\f10d';
           }
         }
       }
@@ -109,7 +110,6 @@ export const Container = styled.div`
 `;
 
 export const ImgBook = styled.div`
-
   @media screen and (min-width: 1020px) {
     width: 100%;
   }

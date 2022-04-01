@@ -1,5 +1,6 @@
-import { Ibook } from "types/livros";
-import { Container, ImgBook, QuotesLeft } from "./style";
+import { Ibook } from 'types/livros';
+
+import { Container, ImgBook, QuotesLeft } from './style';
 
 interface IBookProps {
   item: Ibook;
