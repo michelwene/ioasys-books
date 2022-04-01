@@ -3,7 +3,6 @@ import {
   ForwardRefRenderFunction,
   InputHTMLAttributes
 } from 'react';
-import { FieldError } from 'react-hook-form';
 
 import { Container } from './style';
 
@@ -11,7 +10,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   type: string;
   label?: string;
-  // errorYup: FieldError;
   placeholder?: string;
   isButton?: React.ReactNode;
 }

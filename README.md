@@ -54,7 +54,7 @@ Os usuários devem ser capazes de:
 
 - Login Mobile Incorreto
 <p  align="center" >
-<img src="/login_mobile_incorrect.png"alt="mobile"/>
+<img src="/public/login_mobile_incorrect.png"alt="mobile"/>
 </p>
 
 - Login Mobile Loading
