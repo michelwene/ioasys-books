@@ -39,17 +39,17 @@ Os usuários devem ser capazes de:
 
 - Login Desktop
 <p  align="center" >
-  <img src="/login_desktop.png"alt="Desktop"/>
+  <img src="/public/login_desktop.png"alt="Desktop"/>
 </p>
 
 - Login Tablet
 <p  align="center" >
-<img src="/login_tablet.png"alt="Tablet"/>
+<img src="/public/login_tablet.png"alt="Tablet"/>
 </p>
 
 - Login Mobile
 <p  align="center" >
-<img src="/login_mobile.png"alt="mobile"/>
+<img src="/public/login_mobile.png"alt="mobile"/>
 </p>
 
 - Login Mobile Incorreto
@@ -59,27 +59,27 @@ Os usuários devem ser capazes de:
 
 - Login Mobile Loading
 <p  align="center" >
-<img src="/login_mobile_loading.png"alt="mobile"/>
+<img src="/public/login_mobile_loading.png"alt="mobile"/>
 </p>
 
 - Login Mobile Validação
 <p  align="center" >
-<img src="/login_mobile_validation.png"alt="mobile"/>
+<img src="/public/login_mobile_validation.png"alt="mobile"/>
 </p>
 
 - Books Desktop
 <p  align="center" >
-<img src="/books_desktop.png"alt="mobile"/>
+<img src="/public/books_desktop.png"alt="mobile"/>
 </p>
 
 - Books Tablet
 <p  align="center" >
-<img src="/books_tablet.png"alt="mobile"/>
+<img src="/public/books_tablet.png"alt="mobile"/>
 </p>
 
 - Books Mobile
 <p  align="center" >
-<img src="/books_mobile.png"alt="mobile"/>
+<img src="/public/books_mobile.png"alt="mobile"/>
 </p>
 
 ### Links
