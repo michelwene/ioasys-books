@@ -2,6 +2,10 @@
 
 Esta é uma solução para o desafio Ioasys Books, proprosto pela empresa Ioasys.
 
+- Usuário e senha para logar na aplicação.
+- desafio@ioasys.com.br
+- 12341234
+
 ## :dart: Resumo de conteúdos
 
 - [Visão Geral](#Visão-Geral)
